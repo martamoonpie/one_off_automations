@@ -1,0 +1,386 @@
+#*********************************************************************
+#
+# One-offs
+#
+#*********************************************************************
+
+- id: auto_32_1
+  alias: One-off Turn Room On
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_on
+        - sensor.oneoff_2_turn_on
+        - sensor.oneoff_3_turn_on
+        - sensor.oneoff_4_turn_on
+        - sensor.oneoff_5_turn_on
+        - sensor.oneoff_6_turn_on
+        - sensor.oneoff_7_turn_on
+        - sensor.oneoff_8_turn_on
+        - sensor.oneoff_9_turn_on
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Room' }}
+  action:
+    - service: homeassistant.turn_on
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'room_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set room = 'group.' ~ input ~ '_lights' %}
+              {{ room }}
+
+- id: auto_32_2
+  alias: One-off Turn Room Off
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_off
+        - sensor.oneoff_2_turn_off
+        - sensor.oneoff_3_turn_off
+        - sensor.oneoff_4_turn_off
+        - sensor.oneoff_5_turn_off
+        - sensor.oneoff_6_turn_off
+        - sensor.oneoff_7_turn_off
+        - sensor.oneoff_8_turn_off
+        - sensor.oneoff_9_turn_off
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Room' }}
+  action:
+    - service: homeassistant.turn_off
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-9] %}
+              {% set select = 'room_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set room = 'group.' ~ input ~ '_lights' %}
+              {{ room }}
+
+- id: auto_32_3
+  alias: One-off Turn Light On
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_on
+        - sensor.oneoff_2_turn_on
+        - sensor.oneoff_3_turn_on
+        - sensor.oneoff_4_turn_on
+        - sensor.oneoff_5_turn_on
+        - sensor.oneoff_6_turn_on
+        - sensor.oneoff_7_turn_on
+        - sensor.oneoff_8_turn_on
+        - sensor.oneoff_9_turn_on
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Light' }}
+  action:
+    - service: homeassistant.turn_on
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'light_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set light = 'light.' ~ input %}
+              {{ light }}
+              
+- id: auto_32_4
+  alias: One-off Turn Light Off
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_off
+        - sensor.oneoff_2_turn_off
+        - sensor.oneoff_3_turn_off
+        - sensor.oneoff_4_turn_off
+        - sensor.oneoff_5_turn_off
+        - sensor.oneoff_6_turn_off
+        - sensor.oneoff_7_turn_off
+        - sensor.oneoff_8_turn_off
+        - sensor.oneoff_9_turn_off
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Light' }}
+  action:
+    - service: homeassistant.turn_off
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-9] %}
+              {% set select = 'light_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set light = 'light.' ~ input %}
+              {{ light }}
+              
+- id: auto_32_5
+  alias: One-off Turn Fan On
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_on
+        - sensor.oneoff_2_turn_on
+        - sensor.oneoff_3_turn_on
+        - sensor.oneoff_4_turn_on
+        - sensor.oneoff_5_turn_on
+        - sensor.oneoff_6_turn_on
+        - sensor.oneoff_7_turn_on
+        - sensor.oneoff_8_turn_on
+        - sensor.oneoff_9_turn_on
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Fan' }}
+  action:
+    - service: fan.set_speed
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'fan_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set fan = 'fan.' ~ input ~ '_fan_level' %}
+              {{ fan }}
+        speed: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'fan_speed_' ~ auto_number %}
+              {% set speed = states['input_select'][select].state.lower() %}
+              {{ speed }}
+              
+- id: auto_32_6
+  alias: One-off Turn Fan Off
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_off
+        - sensor.oneoff_2_turn_off
+        - sensor.oneoff_3_turn_off
+        - sensor.oneoff_4_turn_off
+        - sensor.oneoff_5_turn_off
+        - sensor.oneoff_6_turn_off
+        - sensor.oneoff_7_turn_off
+        - sensor.oneoff_8_turn_off
+        - sensor.oneoff_9_turn_off
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Fan' }}
+  action:
+    - service: homeassistant.turn_off
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-9] %}
+              {% set select = 'fan_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set fan = 'fan.' ~ input ~ '_fan_level' %}
+              {{ fan }}
+              
+- id: auto_32_7
+  alias: One-off Turn Thermostat Set
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_on
+        - sensor.oneoff_2_turn_on
+        - sensor.oneoff_3_turn_on
+        - sensor.oneoff_4_turn_on
+        - sensor.oneoff_5_turn_on
+        - sensor.oneoff_6_turn_on
+        - sensor.oneoff_7_turn_on
+        - sensor.oneoff_8_turn_on
+        - sensor.oneoff_9_turn_on
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-8] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Thermostat' }}
+  action:
+    - service: input_text.set_value
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'thermo_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set text = 'input_text.' ~ input ~ '_thermostat' %}
+              {{ text }}
+        value: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'thermo_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set value = states['climate'][input].state %}
+              {{ value }}
+    - service: climate.set_operation_mode
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'thermo_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set climate = 'climate.' ~ input %}
+              {{ climate }}
+        operation_mode: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'thermo_setting_' ~ auto_number %}
+              {% set setting = states['input_select'][select].state.lower() %}
+              {{ setting }}
+    - service: climate.set_temperature
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'thermo_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set climate = 'climate.' ~ input %}
+              {{ climate }}
+        temperature: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-8] %}
+              {% set select = 'thermo_set_' ~ auto_number %}
+              {% set input = states['input_number'][select].state %}
+              {{ input }}
+              
+- id: auto_32_8
+  alias: One-off Turn Thermostat Resume
+  hide_entity: true
+  trigger:
+    - platform: state
+      to: 'True'
+      entity_id:
+        - sensor.oneoff_1_turn_off
+        - sensor.oneoff_2_turn_off
+        - sensor.oneoff_3_turn_off
+        - sensor.oneoff_4_turn_off
+        - sensor.oneoff_5_turn_off
+        - sensor.oneoff_6_turn_off
+        - sensor.oneoff_7_turn_off
+        - sensor.oneoff_8_turn_off
+        - sensor.oneoff_9_turn_off
+  condition:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'auto_number_' ~ auto_number %}
+            {{ states['input_boolean'][select].state == 'on' }}
+        - condition: template
+          value_template: >-
+            {% set object_id = trigger.to_state.object_id %}
+            {% set auto_number = object_id[7:-9] %}
+            {% set select = 'oneoff_select_' ~ auto_number %}
+            {{ states['input_select'][select].state == 'Thermostat' }}
+  action:
+    - service: climate.set_hold_mode
+      data_template:
+        entity_id: >-
+              {% set object_id = trigger.to_state.object_id %}
+              {% set auto_number = object_id[7:-9] %}
+              {% set select = 'thermo_select_' ~ auto_number %}
+              {% set input = states['input_select'][select].state.lower() %}
+              {% set climate = 'climate.' ~ input %}
+              {{ climate }}
+        hold_mode: None
+              

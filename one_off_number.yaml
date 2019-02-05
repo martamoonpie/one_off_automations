@@ -1,0 +1,7 @@
+thermo_set_1:
+  name: Setpoint
+  initial: 70
+  min: 60
+  max: 75
+  step: 1
+  mode: slider

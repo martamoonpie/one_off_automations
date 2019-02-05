@@ -1,0 +1,162 @@
+id: auto_inputs1
+type: horizontal-stack
+cards:
+  - type: vertical-stack
+    cards:
+      - type: entities
+        theme: plum
+        entities:
+          - input_select.oneoff_select_1
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_1
+            state: "Fan"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_1_date_start
+            - input_datetime.select_1_date_end
+            - input_select.fan_select_1
+            - input_select.fan_speed_1
+            - input_boolean.auto_number_1
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_1
+            state: "Light"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_1_date_start
+            - input_datetime.select_1_date_end
+            - input_select.light_select_1
+            - input_boolean.auto_number_1
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_1
+            state: "Room"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_1_date_start
+            - input_datetime.select_1_date_end
+            - input_select.room_select_1
+            - input_boolean.auto_number_1
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_1
+            state: "Thermostat"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_1_date_start
+            - input_datetime.select_1_date_end
+            - input_select.thermo_select_1
+            - input_select.thermo_setting_1
+            - input_number.thermo_set_1
+            - input_boolean.auto_number_1
+  - type: vertical-stack
+    cards:
+      - type: entities
+        theme: cyan_dark
+        entities:
+          - input_select.oneoff_select_2
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_2
+            state: "Fan"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_2_date_start
+            - input_datetime.select_2_date_end
+            - input_select.fan_select_2
+            - input_select.fan_speed_2
+            - input_boolean.auto_number_2
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_2
+            state: "Light"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_2_date_start
+            - input_datetime.select_2_date_end
+            - input_select.light_select_2
+            - input_boolean.auto_number_2
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_2
+            state: "Room"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_2_date_start
+            - input_datetime.select_2_date_end
+            - input_select.room_select_2
+            - input_boolean.auto_number_2
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_2
+            state: "Thermostat"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_2_date_start
+            - input_datetime.select_2_date_end
+            - input_select.thermo_select_2
+            - input_select.thermo_setting_2
+            - input_number.thermo_set_2
+            - input_boolean.auto_number_2
+  - type: vertical-stack
+    cards:
+      - type: entities
+        theme: yellow
+        entities:
+          - input_select.oneoff_select_3
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_3
+            state: "Fan"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_3_date_start
+            - input_datetime.select_3_date_end
+            - input_select.fan_select_3
+            - input_select.fan_speed_3
+            - input_boolean.auto_number_3
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_3
+            state: "Light"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_3_date_start
+            - input_datetime.select_3_date_end
+            - input_select.light_select_3
+            - input_boolean.auto_number_3
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_3
+            state: "Room"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_3_date_start
+            - input_datetime.select_3_date_end
+            - input_select.room_select_3
+            - input_boolean.auto_number_3
+      - type: conditional
+        conditions:
+          - entity: input_select.oneoff_select_3
+            state: "Thermostat"
+        card:
+          type: entities
+          entities:
+            - input_datetime.select_3_date_start
+            - input_datetime.select_3_date_end
+            - input_select.thermo_select_3
+            - input_select.thermo_setting_3
+            - input_number.thermo_set_3
+            - input_boolean.auto_number_3

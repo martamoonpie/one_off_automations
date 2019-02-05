@@ -1,0 +1,71 @@
+oneoff_select_1:
+  name: Device Type
+  options:
+    - Thermostat
+    - Room
+    - Light
+    - Fan
+    
+room_select_1:
+  name: Room
+  options:
+    - Kitchen
+    - Living_Room
+    - Holodeck
+    - Game_Room
+    - Bonus_Room
+    - Bedroom
+    - Ten_Forward
+    - Entryway
+    - Garage
+    - Music_Room
+    - Guest_Room
+    - Bathroom
+    
+light_select_1:
+  name: Light
+  options:
+    - Overhead
+    - Pendant
+    - Cabinet
+    - Dinosaur_Lamp
+    - Piano_Lamp
+    - Music_Room
+    - Living_Room
+    - Ten_Forward
+    - Ten_Forward_Window
+    - Plant_Light
+    - Entry
+    - Front_Accent
+    - Front_Porch
+    - Garage
+    - Driveway
+    - Attic
+    - Bathroom
+    - Game_Room
+    - Mini_Shelf
+    - Game_Shelf
+    - Bar_Lamp
+    - Bonus_Room
+    - Puzzle_Room
+    - Holodeck
+    - Painting_Lamp
+    - Guest_Room
+    
+fan_select_1:
+  name: Fan
+  options:
+    - Living_Room
+    - Music_Room
+    - Bedroom
+    - Ten_Forward
+    - Game_Room
+    - Bonus_Room
+    - Holodeck
+    - Guest_Room
+    
+thermo_select_1:
+  name: Thermostat
+  options:
+    - Downstairs
+    - Upstairs
